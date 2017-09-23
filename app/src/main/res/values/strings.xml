@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">Base Architecture</string>
+    <string name="product_name" translatable="false">Name</string>
+    <string name="product_description" translatable="false">Description</string>
+    <string name="product_quantity" translatable="false">Quantity</string>
+    <string name="product_price" translatable="false">Price</string>
+    <string name="loading_message">Loadin......</string>
+    <string name="create_button_create">Create</string>
+</resources>
