@@ -1,10 +1,14 @@
 package co.com.etn.mvp_base.views.activities;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -27,6 +31,7 @@ public class ProductActivity  extends BaseActivity<ProductsPresenter> implements
 
     private ListView activity_product_list_view;
     private ProductAdapter productAdapter;
+    private FloatingActionButton activity_product_fab;
 
 
     @Override
@@ -39,7 +44,45 @@ public class ProductActivity  extends BaseActivity<ProductsPresenter> implements
         getPresenter().inject(this, getValidateItnernet());
         getPresenter().validateItnernet();
 
+        activity_product_fab = (FloatingActionButton)findViewById(R.id.activity_products_fab);
+
+        final Interpolator interpolador = AnimationUtils.loadInterpolator(getBaseContext(), android.R.interpolator.fast_out_slow_in);
+
+        activity_product_fab.animate()
+                .scaleX(1)
+                .scaleY(1)
+                .setInterpolator(interpolador)
+                .setDuration(600)
+                .setStartDelay(1000)
+                .setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        activity_product_fab.animate()
+                                .scaleY(0)
+                                .scaleX(0)
+                                .setInterpolator(interpolador)
+                                .setDuration(600)
+                                .start();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
     }
+
+
 
     @Override
     public void showProductsList(final ArrayList<Products> productos) {

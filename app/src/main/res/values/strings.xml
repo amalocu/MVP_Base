@@ -6,4 +6,10 @@
     <string name="product_price" translatable="false">Price</string>
     <string name="loading_message">Loadin......</string>
     <string name="create_button_create">Create</string>
+    <string name="validate_internet_error">No se puede conectar a internet.</string>
+    <string name="borrado_exitoso">Borrado Exitoso</string>
+    <string name="borrado_fallido">Borrado Fallido</string>
+    <string name="product_detail_button_delete">Borrar Producto</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="positive_button">OK</string>
 </resources>

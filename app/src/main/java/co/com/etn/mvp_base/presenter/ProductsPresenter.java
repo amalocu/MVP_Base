@@ -7,6 +7,7 @@ import java.util.List;
 
 import co.com.etn.mvp_base.R;
 import co.com.etn.mvp_base.models.Products;
+import co.com.etn.mvp_base.repositories.IProductsRepository;
 import co.com.etn.mvp_base.repositories.ProductsRepository;
 import co.com.etn.mvp_base.views.activities.IProductView;
 import retrofit.RetrofitError;
@@ -16,10 +17,13 @@ import retrofit.RetrofitError;
  */
 
 public class ProductsPresenter extends BasePresenter<IProductView> {
-    private ProductsRepository productsRepository;
+    private IProductsRepository productsRepository;
 
     public ProductsPresenter(){
         this.productsRepository=new ProductsRepository();
+    }
+    public ProductsPresenter(IProductsRepository repository){
+        this.productsRepository=repository;
     }
     public void validateItnernet() {
         if(getValidateItnernet().isConnected()){

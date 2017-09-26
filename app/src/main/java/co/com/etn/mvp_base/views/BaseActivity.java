@@ -8,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import co.com.etn.mvp_base.helper.IValidateItnernet;
+import co.com.etn.mvp_base.helper.ShowAlertDialog;
 import co.com.etn.mvp_base.helper.ValidateInternet;
 import co.com.etn.mvp_base.presenter.BasePresenter;
+import co.com.etn.mvp_base.views.activities.DetailActivity;
 
 /**
  * Created by alexander.vasquez on 16/09/2017.
@@ -21,11 +23,19 @@ public class BaseActivity<T extends BasePresenter> extends AppCompatActivity imp
     private IValidateItnernet validateItnernet;
     private T presenter;
 
+    public ShowAlertDialog getAlertDialog() {
+        return alertDialog;
+    }
+
+    ShowAlertDialog alertDialog ;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         validateItnernet = new ValidateInternet(getApplicationContext());
         //setContentView(R.layout.activity_main);
+        alertDialog = new ShowAlertDialog(this);
     }
 
     @Override

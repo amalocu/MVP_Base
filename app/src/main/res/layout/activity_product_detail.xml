@@ -3,14 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/empanadas"/>
-    </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,4 +84,10 @@
 
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/product_detail_button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_close_24dp"
+        android:onClick="onClick"/>
 </LinearLayout>
