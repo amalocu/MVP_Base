@@ -12,9 +12,12 @@ import retrofit.RetrofitError;
 
 public interface IProductsRepository {
 
-    public ArrayList<Products> getProductoList() throws RetrofitError;
+    public ArrayList<Products> getProductoList() throws RepositoryError;
 
-    public void createProduct(Products producto)  throws RetrofitError;
+    public void createProduct(Products producto)  throws RepositoryError;
 
-    public DeleteProductResponse deleteProduct(String id) throws RetrofitError;
+    public DeleteProductResponse deleteProduct(String id) throws RepositoryError;
+
+    public DeleteProductResponse updateProduct(Products producto) throws RepositoryError;
+
 }

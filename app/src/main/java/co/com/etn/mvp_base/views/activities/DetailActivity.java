@@ -90,8 +90,29 @@ public class DetailActivity  extends BaseActivity<DetailProductsPresenter> imple
     }
 
     @Override
-    public void showAlertDialog(final String message) {
+    public void showToast(final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
+    @Override
+    public void showAlertDialog(final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                DialogInterface.OnClickListener diocl = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                };
+                getAlertDialog().showAlertDialog(R.string.dialog_error_title, message, false,R.string.positive_button, diocl );
+            }
+        });
     }
 
     public void onClick(View view){

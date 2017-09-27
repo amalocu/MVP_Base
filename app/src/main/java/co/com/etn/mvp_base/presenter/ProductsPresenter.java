@@ -9,6 +9,7 @@ import co.com.etn.mvp_base.R;
 import co.com.etn.mvp_base.models.Products;
 import co.com.etn.mvp_base.repositories.IProductsRepository;
 import co.com.etn.mvp_base.repositories.ProductsRepository;
+import co.com.etn.mvp_base.repositories.RepositoryError;
 import co.com.etn.mvp_base.views.activities.IProductView;
 import retrofit.RetrofitError;
 
@@ -49,7 +50,7 @@ public class ProductsPresenter extends BasePresenter<IProductView> {
         try {
             ArrayList<Products> productos = productsRepository.getProductoList();
             getView().showProductsList(productos);
-        }catch (RetrofitError e){
+        }catch (RepositoryError e){
            e.printStackTrace();
         }finally {
             getView().hideProgress();

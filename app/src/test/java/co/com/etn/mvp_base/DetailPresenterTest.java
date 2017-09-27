@@ -9,10 +9,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import co.com.etn.mvp_base.helper.Constants;
 import co.com.etn.mvp_base.helper.ValidateInternet;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
 import co.com.etn.mvp_base.presenter.DetailProductsPresenter;
 import co.com.etn.mvp_base.repositories.IProductsRepository;
+import co.com.etn.mvp_base.repositories.RepositoryError;
 import co.com.etn.mvp_base.views.activities.IDetailProductView;
 
 /**
@@ -62,7 +64,7 @@ public class DetailPresenterTest {
     }
 
     @Test
-    public void methodDeleteProductShouldCallMethodDeletoProductInRepositoryTrue(){
+    public void methodDeleteProductShouldCallMethodDeletoProductInRepositoryTrue() throws RepositoryError{
         String id = "13gljhhdd232";
         DeleteProductResponse deleteProductResponse = new DeleteProductResponse();
         deleteProductResponse.setStatus(true);
@@ -75,7 +77,7 @@ public class DetailPresenterTest {
     }
 
     @Test
-    public void methodDeleteProductShouldCallMethodDeletoProductInRepositoryFalse(){
+    public void methodDeleteProductShouldCallMethodDeletoProductInRepositoryFalse() throws RepositoryError{
         String id = "13gljhhdd232";
         DeleteProductResponse deleteProductResponse = new DeleteProductResponse();
         deleteProductResponse.setStatus(false);
@@ -85,6 +87,18 @@ public class DetailPresenterTest {
         Mockito.verify(detailProductView).showAlertDialog(R.string.borrado_fallido);
         Mockito.verify(detailProductView,Mockito.never()).showToast(R.string.borrado_exitoso);
 
+
+    }
+
+
+    @Test
+    public void methodDeleteProductShouldShowAlertMethodWhenRepositoryReturnError() throws RepositoryError{
+        String id = "13gljhhdd232";
+        RepositoryError repositoryError = new RepositoryError(Constants.DEFAUL_ERROR);
+        Mockito.when(productsRepository.deleteProduct(id)).thenThrow(repositoryError);
+        detailProductsPresenter.deleteProductRepository(id);
+        Mockito.verify(detailProductView).showAlertDialog(repositoryError.getMessage());
+        Mockito.verify(detailProductView,Mockito.never()).showToast(R.string.correct);
 
     }
 

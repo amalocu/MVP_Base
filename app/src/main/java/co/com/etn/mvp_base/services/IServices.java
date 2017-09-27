@@ -9,6 +9,7 @@ import retrofit.http.Body;
 import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 import retrofit.http.Path;
 
 /**
@@ -25,4 +26,6 @@ public interface IServices {
     @DELETE("/products/{id}")
     DeleteProductResponse deleteProduct(@Path("id") String id);
 
+    @PUT("/products/{id}")
+    DeleteProductResponse updateProduct(@Path("id") String id, @Body Products producto);
 }

@@ -15,5 +15,7 @@ public interface IDetailProductView extends IBaseView{
 
     public void showToast(int id);
 
+    public void showToast(String message);
+
     public void showAlertDialog(String message);
 }

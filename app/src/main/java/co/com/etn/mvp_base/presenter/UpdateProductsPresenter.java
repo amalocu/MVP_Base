@@ -1,63 +1,63 @@
 package co.com.etn.mvp_base.presenter;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-
 import co.com.etn.mvp_base.R;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
 import co.com.etn.mvp_base.models.Products;
 import co.com.etn.mvp_base.repositories.IProductsRepository;
 import co.com.etn.mvp_base.repositories.ProductsRepository;
 import co.com.etn.mvp_base.repositories.RepositoryError;
-import co.com.etn.mvp_base.views.activities.IDetailProductView;
 import co.com.etn.mvp_base.views.activities.IProductView;
-import retrofit.RetrofitError;
+import co.com.etn.mvp_base.views.activities.IUpdaterProductView;
 
 /**
- * Created by alexander.vasquez on 16/09/2017.
+ * Created by alexander.vasquez on 26/09/2017.
  */
 
-public class DetailProductsPresenter extends BasePresenter<IDetailProductView> {
+public class UpdateProductsPresenter extends BasePresenter<IUpdaterProductView>  {
     private IProductsRepository productsRepository;
 
-    public DetailProductsPresenter(){
+    public UpdateProductsPresenter(){
         this.productsRepository=new ProductsRepository();
     }
-    public DetailProductsPresenter(IProductsRepository repository){
+    public UpdateProductsPresenter(IProductsRepository repository){
         this.productsRepository=repository;
     }
-    public void deleteProducto(String id) {
+
+
+    public void updateProducto(String id, String name, String description, String price, String quantity ) {
         if(getValidateItnernet().isConnected()){
-            createThread(id);
+            Products producto = new Products();
+            producto.setName(name);
+            producto.setDescription(description);
+            producto.setQuantity(quantity);
+            producto.setPrice(price);
+            producto.setId(id);
+            createThread(producto);
         }else{
             getView().showAlertDialog(R.string.validate_internet_error);
         }
     }
 
-    public void createThread(final String id) {
+    public void createThread(final Products product) {
         getView().showProgress(R.string.loading_message);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                deleteProductRepository(id);
+                udpateProductRepository(product);
             }
         });
         thread.start();
-
     }
 
-
-
-    public void deleteProductRepository(String id) {
+    public void udpateProductRepository(Products product) {
         DeleteProductResponse deleteProductResponse = new DeleteProductResponse();
         try {
-            deleteProductResponse = productsRepository.deleteProduct(id);
+            deleteProductResponse = productsRepository.updateProduct(product);
             if(deleteProductResponse.isStatus()){
-                getView().showToast(R.string.borrado_exitoso);
+                getView().showToast(R.string.update_exitoso);
             }
             else{
-                getView().showAlertDialog(R.string.borrado_fallido);
+                getView().showAlertDialog(R.string.update_fallido);
             }
         }catch (RepositoryError e){
             e.printStackTrace();
@@ -68,6 +68,4 @@ public class DetailProductsPresenter extends BasePresenter<IDetailProductView> {
         }
 
     }
-
-
 }

@@ -22,18 +22,47 @@ public class ProductsRepository implements IProductsRepository{
     }
 
     @Override
-    public ArrayList<Products> getProductoList() throws RetrofitError{
-        ArrayList<Products> products = services.getProduct();
-        return products;
+    public ArrayList<Products> getProductoList() throws RepositoryError{
+        try {
+            ArrayList<Products> products = services.getProduct();
+            return products;
+
+        }catch (RetrofitError retrofitError){
+            throw MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
+        }
+    }
+
+
+
+
+    @Override
+    public void createProduct(Products producto) throws RepositoryError {
+        try {
+            services.createProduct(producto);
+
+        }catch (RetrofitError retrofitError){
+            throw MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
+        }
+    }
+
+
+    @Override
+    public DeleteProductResponse deleteProduct(String id) throws RepositoryError {
+        try {
+            return services.deleteProduct(id);
+
+        }catch (RetrofitError retrofitError){
+            throw MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
+        }
     }
 
     @Override
-    public void createProduct(Products producto) throws RetrofitError {
-        services.createProduct(producto);
-    }
+    public DeleteProductResponse updateProduct(Products producto) throws RepositoryError {
+        try {
+            return services.updateProduct(producto.getId(),producto);
 
-    @Override
-    public DeleteProductResponse deleteProduct(String id) throws RetrofitError {
-        return services.deleteProduct(id);
+        }catch (RetrofitError retrofitError){
+            throw MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
+        }
     }
 }

@@ -12,4 +12,7 @@
     <string name="product_detail_button_delete">Borrar Producto</string>
     <string name="dialog_error_title">Error</string>
     <string name="positive_button">OK</string>
+    <string name="correct">Transaccion Exitosa</string>
+    <string name="update_exitoso">Actualización Exitosa</string>
+    <string name="update_fallido">Actualización Fallida</string>
 </resources>
