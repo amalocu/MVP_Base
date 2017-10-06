@@ -5,21 +5,19 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
 import co.com.etn.mvp_base.helper.Constants;
 import co.com.etn.mvp_base.helper.ValidateInternet;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
 import co.com.etn.mvp_base.models.Products;
-import co.com.etn.mvp_base.presenter.DetailProductsPresenter;
 import co.com.etn.mvp_base.presenter.UpdateProductsPresenter;
 import co.com.etn.mvp_base.repositories.IProductsRepository;
 import co.com.etn.mvp_base.repositories.RepositoryError;
-import co.com.etn.mvp_base.views.activities.IDetailProductView;
 import co.com.etn.mvp_base.views.activities.IUpdaterProductView;
 
 /**
@@ -40,9 +38,10 @@ public class UpdateProductPresenterTest {
     //Espia
     UpdateProductsPresenter updateProductsPresenter;
 
+    @InjectMocks
     Products product;
     public void setProduct() {
-        this.product = new Products();
+        //this.product = new Products();
         product.setId("13gljhhdd232");
         product.setName("La Sabrosa");
         product.setDescription("La Sabrosa y riquisima");
@@ -65,7 +64,7 @@ public class UpdateProductPresenterTest {
         setProduct();
         Mockito.when(validateInternet.isConnected()).thenReturn(true);
         updateProductsPresenter.updateProducto(product.getId(), product.getName(), product.getDescription(), product.getPrice(), product.getQuantity() );
-        Mockito.verify(updateProductsPresenter).createThread(product);
+        Mockito.verify(updateProductsPresenter).createThread(Matchers.refEq(product));
         Mockito.verify(updateProductView,Mockito.never()).showAlertDialog(R.string.validate_internet_error);
 
     }

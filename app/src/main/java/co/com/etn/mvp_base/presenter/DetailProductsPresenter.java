@@ -1,18 +1,11 @@
 package co.com.etn.mvp_base.presenter;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-
 import co.com.etn.mvp_base.R;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
-import co.com.etn.mvp_base.models.Products;
 import co.com.etn.mvp_base.repositories.IProductsRepository;
 import co.com.etn.mvp_base.repositories.ProductsRepository;
 import co.com.etn.mvp_base.repositories.RepositoryError;
 import co.com.etn.mvp_base.views.activities.IDetailProductView;
-import co.com.etn.mvp_base.views.activities.IProductView;
-import retrofit.RetrofitError;
 
 /**
  * Created by alexander.vasquez on 16/09/2017.

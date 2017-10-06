@@ -2,6 +2,7 @@ package co.com.etn.mvp_base.repositories;
 
 import java.util.ArrayList;
 
+import co.com.etn.mvp_base.helper.DataBase;
 import co.com.etn.mvp_base.helper.ServicesFactory;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
 import co.com.etn.mvp_base.models.Products;
@@ -12,7 +13,7 @@ import retrofit.RetrofitError;
  * Created by alexander.vasquez on 16/09/2017.
  */
 
-public class ProductsRepository implements IProductsRepository{
+public class ProductsRepository implements IProductsRepository {
 
     private IServices services;
 
@@ -23,8 +24,15 @@ public class ProductsRepository implements IProductsRepository{
 
     @Override
     public ArrayList<Products> getProductoList() throws RepositoryError{
-        try {
+       /* try {
             ArrayList<Products> products = services.getProduct();
+            return products;
+
+        }catch (RetrofitError retrofitError){
+            throw MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
+        }*/
+        try {
+            ArrayList<Products> products = DataBase.dao.fetchAllProducts();
             return products;
 
         }catch (RetrofitError retrofitError){
@@ -32,6 +40,11 @@ public class ProductsRepository implements IProductsRepository{
         }
     }
 
+    @Override
+    public ArrayList<Products> getProductoListDB() throws Exception{
+            ArrayList<Products> products = DataBase.dao.fetchAllProducts();
+            return products;
+    }
 
 
 
@@ -64,5 +77,10 @@ public class ProductsRepository implements IProductsRepository{
         }catch (RetrofitError retrofitError){
             throw MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
         }
+    }
+
+    @Override
+    public boolean createProductDB(Products producto) throws RepositoryError {
+        return DataBase.dao.createProduct(producto);
     }
 }

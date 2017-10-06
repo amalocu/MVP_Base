@@ -59,4 +59,5 @@
         android:layout_height="wrap_content"
         android:text="@string/create_button_create"
         />
+
 </LinearLayout>

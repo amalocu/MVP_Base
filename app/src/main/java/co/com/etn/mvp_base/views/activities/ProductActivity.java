@@ -45,44 +45,40 @@ public class ProductActivity  extends BaseActivity<ProductsPresenter> implements
         getPresenter().validateItnernet();
 
         activity_product_fab = (FloatingActionButton)findViewById(R.id.activity_products_fab);
+        activity_product_fab.setOnClickListener(new View.OnClickListener() {
 
-        final Interpolator interpolador = AnimationUtils.loadInterpolator(getBaseContext(), android.R.interpolator.fast_out_slow_in);
+            @Override
 
-        activity_product_fab.animate()
-                .scaleX(1)
-                .scaleY(1)
-                .setInterpolator(interpolador)
-                .setDuration(600)
-                .setStartDelay(1000)
-                .setListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductActivity.this, CreateActivity.class);
+                startActivity(intent);
+            }
 
-                    }
+        });
 
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        activity_product_fab.animate()
-                                .scaleY(0)
-                                .scaleX(0)
-                                .setInterpolator(interpolador)
-                                .setDuration(600)
-                                .start();
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
-                });
     }
 
+    @Override
 
+    protected void onRestart() {
+
+        super.onRestart();
+
+        getPresenter().validateItnernet();
+
+    }
+
+    @Override
+
+    protected void onResume() {
+
+        super.onResume();
+
+        //progress.show();
+
+        getPresenter().validateItnernet();
+
+    }
 
     @Override
     public void showProductsList(final ArrayList<Products> productos) {

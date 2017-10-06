@@ -6,7 +6,6 @@ import co.com.etn.mvp_base.models.Products;
 import co.com.etn.mvp_base.repositories.IProductsRepository;
 import co.com.etn.mvp_base.repositories.ProductsRepository;
 import co.com.etn.mvp_base.repositories.RepositoryError;
-import co.com.etn.mvp_base.views.activities.IProductView;
 import co.com.etn.mvp_base.views.activities.IUpdaterProductView;
 
 /**
@@ -53,7 +52,7 @@ public class UpdateProductsPresenter extends BasePresenter<IUpdaterProductView> 
         DeleteProductResponse deleteProductResponse = new DeleteProductResponse();
         try {
             deleteProductResponse = productsRepository.updateProduct(product);
-            if(deleteProductResponse.isStatus()){
+            if(deleteProductResponse!=null && deleteProductResponse.isStatus()){
                 getView().showToast(R.string.update_exitoso);
             }
             else{

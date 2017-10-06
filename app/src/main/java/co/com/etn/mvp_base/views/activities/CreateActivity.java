@@ -26,7 +26,6 @@ public class CreateActivity extends BaseActivity<CreateProductPresenter> impleme
     EditText create_product_price;
     EditText create_product_quantity;
     Button create_product_create;
-    Products producto;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,14 +46,7 @@ public class CreateActivity extends BaseActivity<CreateProductPresenter> impleme
 
     }
 
-    private boolean isEmpty(EditText v){
-        boolean res = true;
-        if(v instanceof EditText){
-           res =  ((EditText) v).getText().toString().isEmpty();
-            Log.e("ERRORRRRRRR","Resultado --------------------------"+ res);
-        }
-        return res;
-    }
+
 
     @Override
     public void afterTextChanged(Editable s) {
@@ -65,8 +57,6 @@ public class CreateActivity extends BaseActivity<CreateProductPresenter> impleme
                 isEmpty(create_product_quantity) )
             res = false;
         create_product_create.setEnabled(res);
-        Log.e("ERRORRRRRRR","Resultado --------------------------"+res);
-
     }
 
 
@@ -87,6 +77,11 @@ public class CreateActivity extends BaseActivity<CreateProductPresenter> impleme
             createProgress();
             getPresenter().inject(this, getValidateItnernet());
             getPresenter().validateItnernet();
+            String name  = create_product_name.getText().toString();
+            String description =  create_product_description.getText().toString();
+            String price = create_product_price.getText().toString();
+            String quantity = create_product_quantity.getText().toString();
+            getPresenter().createNewProduct(name, description, price, quantity );
         }
     }
 

@@ -14,10 +14,13 @@ public interface IProductsRepository {
 
     public ArrayList<Products> getProductoList() throws RepositoryError;
 
+    ArrayList<Products> getProductoListDB() throws Exception;
+
     public void createProduct(Products producto)  throws RepositoryError;
 
     public DeleteProductResponse deleteProduct(String id) throws RepositoryError;
 
     public DeleteProductResponse updateProduct(Products producto) throws RepositoryError;
 
+    public boolean createProductDB(Products producto)throws RepositoryError;
 }

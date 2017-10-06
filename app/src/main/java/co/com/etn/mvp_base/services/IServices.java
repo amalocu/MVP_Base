@@ -3,6 +3,7 @@ package co.com.etn.mvp_base.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.com.etn.mvp_base.models.Customers;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
 import co.com.etn.mvp_base.models.Products;
 import retrofit.http.Body;
@@ -21,11 +22,17 @@ public interface IServices {
     public ArrayList<Products> getProduct();
 
     @POST("/products")
-    Products createProduct( @Body Products producto);
+    public Products createProduct( @Body Products producto);
 
     @DELETE("/products/{id}")
-    DeleteProductResponse deleteProduct(@Path("id") String id);
+    public DeleteProductResponse deleteProduct(@Path("id") String id);
 
     @PUT("/products/{id}")
-    DeleteProductResponse updateProduct(@Path("id") String id, @Body Products producto);
+    public DeleteProductResponse updateProduct(@Path("id") String id, @Body Products producto);
+
+    @GET("/customers")
+    public ArrayList<Customers> getCustomers();
+
+    @POST("/customers")
+    Customers createCustomers(@Body  Customers customers);
 }

@@ -15,4 +15,16 @@
     <string name="correct">Transaccion Exitosa</string>
     <string name="update_exitoso">Actualización Exitosa</string>
     <string name="update_fallido">Actualización Fallida</string>
+    <string name="sin_datos">No se encontraro datos para la consulta.</string>
+    <string name="create_exitoso">Registro insertado con exito.</string>
+    <string name="create_fallido">Fallo el registro.</string>
+    <string name="customer_name">Nombre</string>
+    <string name="customer_surname">Apellido</string>
+    <string name="phone_description">Descripción</string>
+    <string name="phone_number">Número</string>
+    <string name="location_y">Latitud</string>
+    <string name="location_x">Longitud</string>
+    <string name="geo_reference">Localización</string>
+    <string name="phone_type">Point</string>
+
 </resources>

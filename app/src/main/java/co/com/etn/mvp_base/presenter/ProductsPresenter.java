@@ -3,7 +3,6 @@ package co.com.etn.mvp_base.presenter;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import co.com.etn.mvp_base.R;
 import co.com.etn.mvp_base.models.Products;
@@ -11,7 +10,6 @@ import co.com.etn.mvp_base.repositories.IProductsRepository;
 import co.com.etn.mvp_base.repositories.ProductsRepository;
 import co.com.etn.mvp_base.repositories.RepositoryError;
 import co.com.etn.mvp_base.views.activities.IProductView;
-import retrofit.RetrofitError;
 
 /**
  * Created by alexander.vasquez on 16/09/2017.
@@ -32,6 +30,7 @@ public class ProductsPresenter extends BasePresenter<IProductView> {
         }else{
             Log.getStackTraceString(new Throwable("11111"));
         }
+        createThread();
     }
 
     private void createThread() {
@@ -39,7 +38,8 @@ public class ProductsPresenter extends BasePresenter<IProductView> {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                getProductList();
+                //getProductList();
+                getProductListLocal();
             }
         });
         thread.start();
@@ -57,5 +57,19 @@ public class ProductsPresenter extends BasePresenter<IProductView> {
         }
 
     }
+
+    private void getProductListLocal() {
+        try {
+            ArrayList<Products> productos = productsRepository.getProductoListDB();
+            Log.e("ERRORORORORORORORORORO","Productos Leidos------------------------------------------>"+String.valueOf(productos.size()));
+            getView().showProductsList(productos);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            getView().hideProgress();
+        }
+
+    }
+
 
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import co.com.etn.mvp_base.helper.IValidateItnernet;
@@ -62,5 +63,13 @@ public class BaseActivity<T extends BasePresenter> extends AppCompatActivity imp
 
     public void setPresenter(T presenter) {
         this.presenter = presenter;
+    }
+
+    public boolean isEmpty(EditText v){
+        boolean res = true;
+        if(v instanceof EditText){
+            res =  ((EditText) v).getText().toString().isEmpty();
+        }
+        return res;
     }
 }
