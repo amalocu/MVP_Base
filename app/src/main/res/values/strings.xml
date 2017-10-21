@@ -26,5 +26,38 @@
     <string name="location_x">Longitud</string>
     <string name="geo_reference">Localización</string>
     <string name="phone_type">Point</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_product">Productos</string>
+    <string name="title_contact">Contactos</string>
+    <string name="title_perfil">Perfil</string>
+    <string name="main_textview_user">\@usuario</string>
+    <string name="main_textview_like"> Me gusta</string>
+    <string name="main_textview_follow"> Siguiendo</string>
+    <string name="main_textview_follower"> Seguidores</string>
+    <string name="main_textview_notification">Notificaciones</string>
+    <string name="main_textview_sync">Sincronizar con: </string>
+    <string name="main_button_close">Cerrar SesiÃ³n</string>
+    <string name="main_string_despedida">Hasta pronto</string>
+    <string-array name="main_spinner_sync">
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Instagram</item>
+        <item>Linked In</item>
+        <item>Youtube</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

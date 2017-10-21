@@ -3,13 +3,15 @@ package co.com.etn.mvp_base.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * com.cosmo.arquitecturamvpbase.model
  * Arquitectura-base
  * Created by alexander.vasquez on 3/10/2017.6:37 PM
  */
 
-public class PhoneList {
+public class PhoneList  implements Serializable {
 
     @SerializedName("description")
     @Expose

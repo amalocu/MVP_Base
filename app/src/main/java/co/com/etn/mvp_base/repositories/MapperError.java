@@ -16,7 +16,7 @@ package co.com.etn.mvp_base.repositories;
         import retrofit.RetrofitError;
 
         import retrofit.client.Response;
-
+        import retrofit.mime.TypedByteArray;
 
 
 /**
@@ -96,6 +96,8 @@ public class MapperError {
                 }*/
 
             }
+
+            mensaje =  new String(((TypedByteArray)retrofitError.getResponse().getBody()).getBytes());
 
             repositoryError = new RepositoryError(mensaje);
 

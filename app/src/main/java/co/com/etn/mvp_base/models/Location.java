@@ -5,6 +5,7 @@ import android.support.v4.content.res.TypedArrayUtils;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Created by alexander.vasquez on 3/10/2017.6:50 PM
  */
 
-public class Location {
+public class Location  implements Serializable {
     @SerializedName("type")
     @Expose
     private String type;

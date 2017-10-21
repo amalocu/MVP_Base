@@ -19,5 +19,9 @@ public class Constants {
     //DATABASE
     public static final String DATA_BASE_NAME = "shoppin_db.db";
     public static final int DATA_BASE_VERSION = 1;
+    public static final String TITLE_PRODUCT = "PRODUCTOS";
+    public static final String EMPTY = "VACIO";
 
+    public static final String TITLE_CONTACT = "CONTACTOS";
+    public static final String PREFERENS_FILE = "mbp";
 }

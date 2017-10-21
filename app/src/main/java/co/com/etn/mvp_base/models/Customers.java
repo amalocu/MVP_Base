@@ -3,6 +3,7 @@ package co.com.etn.mvp_base.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * Created by alexander.vasquez on 3/10/2017.6:35 PM
  */
 
-public class Customers {
+public class Customers  implements Serializable {
 
     @SerializedName("name")
     @Expose

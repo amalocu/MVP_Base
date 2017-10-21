@@ -16,9 +16,11 @@ public class BasePresenter<T extends IBaseView> {
     private T view;
     private IValidateItnernet validateItnernet;
 
-    public void inject(T view, IValidateItnernet validateItnernet){
-        this.view=view;
-        this.validateItnernet=validateItnernet;
+    public void inject(T view, IValidateItnernet validateItnernet) {
+        this.view = view;
+        this.validateItnernet = validateItnernet;
+
+
 
     }
 
@@ -26,8 +28,7 @@ public class BasePresenter<T extends IBaseView> {
         return view;
     }
 
-    public IValidateItnernet getValidateItnernet() {
+    public IValidateItnernet getValidateItnernet(){
         return validateItnernet;
     }
-
 }
