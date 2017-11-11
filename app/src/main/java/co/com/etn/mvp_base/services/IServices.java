@@ -5,6 +5,8 @@ import java.util.List;
 
 import co.com.etn.mvp_base.models.Customers;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
+import co.com.etn.mvp_base.models.Menu;
+import co.com.etn.mvp_base.models.Note;
 import co.com.etn.mvp_base.models.Products;
 import co.com.etn.mvp_base.models.User;
 import retrofit.http.Body;
@@ -46,4 +48,9 @@ public interface IServices {
     @GET("/user")
     User autoLogin(@Header("Authorization") String token);
 
+    @GET("/note.xml")
+    Note getNote();
+
+    @GET("/simple.xml")
+    Menu getMenu();
 }

@@ -1,6 +1,7 @@
 package co.com.etn.mvp_base.repositories;
 
 import co.com.etn.mvp_base.helper.ServicesFactory;
+import co.com.etn.mvp_base.helper.TypeDecryption;
 import co.com.etn.mvp_base.models.User;
 import co.com.etn.mvp_base.services.IServices;
 import retrofit.RetrofitError;
@@ -16,7 +17,7 @@ public class LoginRepository implements ILoginRepository {
     private IServices services;
 
     public LoginRepository(){
-        ServicesFactory servicesFactory =new ServicesFactory();
+        ServicesFactory servicesFactory =new ServicesFactory(TypeDecryption.JSON);
         services = (IServices)servicesFactory.getInstance(IServices.class);
     }
 

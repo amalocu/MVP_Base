@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            >
+
+            <ImageView
+                android:id="@+id/main_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/main_textview_user" />
+            <TextView
+                android:id="@+id/main_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_textview_user"
+                android:layout_below="@+id/main_foto"
+                android:textAlignment="center"
+               android:textStyle="bold"
+               android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_marginTop="50dp"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="40dp"
+            >
+            <TextView
+                android:id="@+id/main_like"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_like_24dp"
+                android:text="@string/main_textview_like"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/main_following"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+
+                android:drawableTop="@drawable/ic_follow_24dp"
+                android:text="@string/main_textview_follow"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/main_followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:drawableTop="@drawable/ic_follower_24dp"
+                android:text="@string/main_textview_follower"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.95"
+                android:text="@string/main_textview_notification" />
+
+            <CheckBox
+                android:id="@+id/main_checkbox_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/main_textview_sync" />
+
+           <Spinner
+               android:id="@+id/main_spinner_sync"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="0.5"
+
+              />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="10dp"
+
+            >
+
+            <Button
+                android:id="@+id/main_button_cerrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_button_close"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/layouts"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

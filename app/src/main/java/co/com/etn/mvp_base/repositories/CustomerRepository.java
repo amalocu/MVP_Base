@@ -3,6 +3,7 @@ package co.com.etn.mvp_base.repositories;
 import java.util.ArrayList;
 
 import co.com.etn.mvp_base.helper.ServicesFactory;
+import co.com.etn.mvp_base.helper.TypeDecryption;
 import co.com.etn.mvp_base.models.Customers;
 import co.com.etn.mvp_base.services.IServices;
 import retrofit.RetrofitError;
@@ -18,7 +19,7 @@ public class CustomerRepository implements ICustomerRepository {
     private IServices services;
 
     public CustomerRepository(){
-        ServicesFactory servicesFactory =new ServicesFactory();
+        ServicesFactory servicesFactory =new ServicesFactory(TypeDecryption.JSON);
         services = (IServices)servicesFactory.getInstance(IServices.class);
     }
 

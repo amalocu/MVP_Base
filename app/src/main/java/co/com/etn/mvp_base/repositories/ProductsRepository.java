@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import co.com.etn.mvp_base.helper.DataBase;
 import co.com.etn.mvp_base.helper.ServicesFactory;
+import co.com.etn.mvp_base.helper.TypeDecryption;
 import co.com.etn.mvp_base.models.DeleteProductResponse;
 import co.com.etn.mvp_base.models.Products;
 import co.com.etn.mvp_base.services.IServices;
@@ -18,7 +19,7 @@ public class ProductsRepository implements IProductsRepository {
     private IServices services;
 
     public ProductsRepository(){
-        ServicesFactory servicesFactory =new ServicesFactory();
+        ServicesFactory servicesFactory =new ServicesFactory(TypeDecryption.JSON);
         services = (IServices)servicesFactory.getInstance(IServices.class);
     }
 

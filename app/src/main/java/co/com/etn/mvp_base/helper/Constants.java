@@ -7,6 +7,7 @@ package co.com.etn.mvp_base.helper;
 public class Constants {
 
     //SERVICES
+    public static final String URL_XML_BASE_TESTING = "https://www.w3schools.com/xml";
     public static final String URL_BASE_TESTING = "https://shoppingproducts.herokuapp.com";
     public static final long TIME_OUT = 5;
     public static final String ITEM_PRODUCT = "producto";

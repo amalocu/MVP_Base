@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import co.com.etn.mvp_base.R;
 import co.com.etn.mvp_base.helper.ValidateInternet;
 import co.com.etn.mvp_base.models.Customers;
+import co.com.etn.mvp_base.models.Note;
 import co.com.etn.mvp_base.models.Products;
 import co.com.etn.mvp_base.models.User;
 import co.com.etn.mvp_base.repositories.ICustomerRepository;
 import co.com.etn.mvp_base.repositories.ILoginRepository;
 import co.com.etn.mvp_base.repositories.LoginRepository;
+import co.com.etn.mvp_base.repositories.NotesRepository;
 import co.com.etn.mvp_base.repositories.RepositoryError;
 import co.com.etn.mvp_base.views.activities.IGetCustomerView;
 import co.com.etn.mvp_base.views.activities.ILoginView;
@@ -84,6 +86,7 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 loginRepository(user);
             }
         });
@@ -93,7 +96,13 @@ public class LoginPresenter extends BasePresenter<ILoginView> {
     public void loginRepository(User user) {
         try {
             user = loginRepository.login(user);
+            Log.d("NOTESSSSSSS","1111111111111111111111111111111");
+            NotesRepository notesRepository = new NotesRepository();
+            Log.d("NOTESSSSSSS","22222222222222222222222222222");
+            Note note = notesRepository.getNote();
+            Log.d("NOTESSSSSSS",note.getBody());
             getView().showUserInfor(user);
+
         }catch (RepositoryError e){
             e.printStackTrace();
             getView().showAlertDialog(e.getMessage());
